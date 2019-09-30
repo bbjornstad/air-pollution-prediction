@@ -348,6 +348,48 @@ class AQSFetcher:
             print('Bad URL!')
         except ValueError:
             print('No matching data could be found!')
+            
+    def daily_data_by_state(self, state, params, bdate, edate):
+        """
+        Gets the annual data by state.
+        Takes the following parameters as integers or wrapped string integers:
+        - state: state id code
+        - param: ids of desired parameters to measure
+        - bdate, edate: start and end dates in YYYYMMDD format
+        """
+        url = self.api_url + '/dailyData/byState' + self.stub
+        search_params = '&param='
+        for p in params:
+            search_params += str(p)
+            search_params += ','
+        search_params = search_params[:-1]
+        search_params += (
+            f'&state={state}' +
+            f'&bdate={bdate}' +
+            f'&edate={edate}')
+        url += search_params
+        
+        print(url)
+
+        response = requests.get(url)
+
+        try:
+            assert response.status_code == requests.codes.ok
+
+            jsn = json.loads(response.content)
+            json_header = jsn['Header']
+            json_data = jsn['Data']
+
+            if json_header[0]['rows'] == 0:
+                raise ValueError
+
+            df = pd.DataFrame.from_records(json_data)
+            return df
+
+        except AssertionError:
+            print('Bad URL!')
+        except ValueError:
+            print('No matching data could be found!')
 
     def get_monitors_at_site(self, state, county, site, params, bdate, edate):
         """
