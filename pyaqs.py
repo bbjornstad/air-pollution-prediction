@@ -368,8 +368,6 @@ class AQSFetcher:
             f'&bdate={bdate}' +
             f'&edate={edate}')
         url += search_params
-        
-        print(url)
 
         response = requests.get(url)
 
