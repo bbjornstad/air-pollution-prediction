@@ -6,10 +6,10 @@ In some sense, this is a continuation of the Module 3 project for the Data Scien
 
 ## Tools Used
 This project makes use of a variety of tools that are generally standard in the world of Python data science. Please make sure you have these packages installed (or use Anaconda):
-- Pandas
-- Numpy
-- sklearn
-- statsmodels
+- `Pandas`
+- `Numpy`
+- `scikit-learn`
+- `statsmodels`
 
 ## Project Structure
 The outline of the project hierarchy is here:
@@ -22,7 +22,6 @@ The outline of the project hierarchy is here:
 - [data_cleaning](data_cleaning.ipynb): An interactive Jupyter notebook that cleans raw AQS data and stores it for easy access.
 - [preliminary_data_analysis](preliminary_data_analysis.ipynb): An introductory analysis notebook that does basic manipulations and exploration of what statistical tools may be helpful.
 - [data_analysis](data_analysis.ipynb): An interactive notebook that handles full analysis and visualization of the cleaned data. For time efficiency when viewing in the future, this notebook should be the starting point unless you wish to go through the cleaning procedures themselves.
-- [non_technical_notebook](conclusions_and_visualizations.ipynb): An interactive notebook targetted at a non-technical audience that details the findings of my analysis.
 - [pyaqs.py](pyaqs.py): A custom Python module to handle wrapping of AQS API requests to Pandas dataframes.
 
 ## Problems and Solutions
